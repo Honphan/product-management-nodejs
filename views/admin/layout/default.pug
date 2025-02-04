@@ -1,0 +1,19 @@
+doctype html
+html
+   head
+    title #{title}
+    link(rel='stylesheet', href='https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/css/style.css')
+   body
+    include ../partials/header.pug 
+    .main
+     block main
+   
+     block aside
+    
+
+
+    
+script(src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js")
+script(src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js")
+script(src="/js/script.js")  

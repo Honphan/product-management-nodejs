@@ -1,0 +1,47 @@
+/* Positioning the header */
+.header {
+        background-color: #0C2738;
+        color: white;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed; /* Fixed position */
+        top: 0;
+        width: 100%;
+        z-index: 1000; /* Ensure it stays on top */
+    }
+    
+    /* Positioning the aside */
+    .aside {
+        position: fixed; /* Fixed position */
+        top: 70px; /* Below the header */
+        left: 0;
+        width: 250px;
+        height: calc(100% - 70px); /* Full height minus the header height */
+        background-color: #f8f9fa;
+        padding: 20px;
+        box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    }
+    
+    /* Positioning the main content */
+    .main {
+        margin-left: 250px; /* Leave space for the aside */
+        padding: 20px;
+        margin-top: 70px; /* Leave space for the header */
+    }
+    
+    /* Example styles for the product section */
+    .products {
+        padding: 20px;
+    }
+    
+    .products .container {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    .products .col-12 {
+        flex: 1 1 100%;
+        margin-bottom: 20px;
+    }

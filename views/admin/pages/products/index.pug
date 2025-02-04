@@ -1,0 +1,62 @@
+extends ../../layout/default
+include ../../mixins/aside/index
+
+
+block main
+   .products
+    .container
+      .row
+        .col-md-12
+          h1 Products
+          br 
+          .filter
+           each button in filterStatus 
+            button.btn.btn-primary(class=button.class, type="submit", button-filter=button.value)= button.name
+
+          form.form-search
+            input.form-control(type="text", placeholder="Search", name="search",value=search)
+            button.btn.btn-primary(type="submit") Search
+             
+            
+
+          table.table
+            thead
+              tr
+                th(scope='col') STT
+                th(scope='col') Hinh anh
+                th(scope='col') ten san pham
+                th(scope='col') gia
+                th(scope='col') trang thai
+                th(scope='col') hanh dong
+            tbody
+                each product,index in products
+                  tr
+                    th(scope='row') #{index+1}
+                    td 
+                      img(src=product.thumbnail alt=product.title style='width: 50px; height: 50px;')
+                    td #{product.title}
+                    td #{product.price}
+                    if(product.status =='active')
+                      td 
+                        a(href='#' class="badge badge-success") Active
+                    else
+                      td 
+                        a(href='#' class="badge badge-danger") Inactive
+
+                    td 
+                      a.btn.btn-primary(href='#') Edit
+                      a.btn.btn-danger(href='#') Delete
+
+block aside
+    +aside()
+
+    nav(aria-label='Page navigation example')
+      ul.pagination
+        li(class=`page-item ${pagination.currentPage === 1 ? 'disabled' : ''}`)
+          a.page-link(href='#', aria-label='Previous', button-pagination=pagination.currentPage-1)
+            span(aria-hidden='true') &laquo;
+        li(class=`page-item active`)
+          a.page-link(href='#', button-pagination=pagination.currentPage) #{pagination.currentPage}
+        li(class=`page-item ${pagination.currentPage === pagination.pages ? 'disabled' : ''}`)
+          a.page-link(href='#', aria-label='Next', button-pagination=pagination.currentPage+1)
+            span(aria-hidden='true') &raquo;

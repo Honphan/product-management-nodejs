@@ -1,0 +1,124 @@
+/* Header  */
+.header {
+    background-color: #0C2738;
+    color : white;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ }
+ .header .header-logo {
+    display : flex;
+    justify-content: center;
+    align-items: center;
+ }
+
+ .header .header-menu {
+    display : flex;
+    justify-content: space-between;
+    align-items: center;
+    width : 100%;
+    height : 100%;
+
+ }
+ .header .header-menu ul {
+    display : flex;
+    list-style-type: none;
+   align-items: center;
+   justify-content: center;
+   margin-bottom: 0;
+ }
+.header .header-menu ul li{
+    margin-right: 50px;
+}
+
+.header .header-menu ul li a {
+    color : white;
+    text-decoration: none;
+}
+
+/* End Header */
+
+/* Footer */
+
+.footer {
+    background-color: #0C2738;
+    color : white;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ 
+ }
+.footer .copyright {
+    display : flex;
+    justify-content: center;
+    align-items: center;
+ }
+/* End Footer */
+
+/* Product */
+
+.inner-title {
+   margin: 10px 0;
+   color: #F1B722;
+}
+
+.product-item {
+   border: 1px solid #ccc;
+   margin-bottom : 10px;
+
+}
+
+
+/* Positioning the header */
+.header {
+    background-color: #0C2738;
+    color: white;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed; /* Fixed position */
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure it stays on top */
+}
+
+/* Positioning the aside */
+.aside {
+    position: fixed; /* Fixed position */
+    top: 70px; /* Below the header */
+    left: 0;
+    width: 250px;
+    height: calc(100% - 70px); /* Full height minus the header height */
+    background-color: #f8f9fa;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+/* Positioning the main content */
+.main {
+    margin-left: 250px; /* Leave space for the aside */
+    padding: 20px;
+    margin-top: 70px; /* Leave space for the header */
+}
+
+/* Example styles for the product section */
+.products {
+    padding: 20px;
+}
+
+.products .container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.products .col-12 {
+    flex: 1 1 100%;
+    margin-bottom: 20px;
+}
+
+.filter {
+    margin-bottom: 20px;
+}
