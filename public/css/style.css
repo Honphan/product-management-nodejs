@@ -122,3 +122,26 @@
 .filter {
     margin-bottom: 20px;
 }
+
+/* alert status */
+#alert-status{
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    z-index: 1000;
+}
+
+
+
+/* end alert status */
+
+
+/* image file */
+#thumbnail-preview{
+    height : 100px;
+    width: 100px;
+    border: 1px solid #ddd;
+    margin-top : 5px;
+}
+
+/* end image file */

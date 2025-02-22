@@ -1,0 +1,14 @@
+extends ../../layout/default.pug
+include ../../mixins/box-head.pug
+
+block main 
+  .inner-main 
+   .container 
+    .row
+      .col-12 
+        +box-head('Danh sách sản phẩm')
+   
+    .row
+      .col-12 
+        p #{title}
+        p #{product}

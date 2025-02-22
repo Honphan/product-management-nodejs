@@ -1,0 +1,14 @@
+extends ../../layout/default
+include ../../mixins/aside/index
+
+
+
+block main 
+    h1 #{titlePage}
+    div #{product.title}
+    div #{product.description}
+    div #{product.price}
+    div #{product.discountPercentage}
+    image(src=product.thumbnail alt="thumbnail")
+block aside 
+    +aside()

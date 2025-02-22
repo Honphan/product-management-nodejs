@@ -7,6 +7,9 @@ block main
     .container
       .row
         .col-md-12
+          - if (messages.success)
+             div(class='alert alert-success' id='alert-status') #{messages.success}
+         
           h1 Products
           br 
           .filter
@@ -17,11 +20,24 @@ block main
             input.form-control(type="text", placeholder="Search", name="search",value=search)
             button.btn.btn-primary(type="submit") Search
              
-            
-
-          table.table
+          form(id='filter-status' action='/admin/products/changeStatusMulti' method='POST').mb-3
+           div(class="row mt-3")
+            div(class="col-3")
+              select(class="custom-select mr-sm-2", name="status", id="inlineFormCustomSelect")
+                option(value="active" id='option-status') Active
+                option(value="inactive" id='option-status') Inactive
+            div(class="col-3 d-none")    
+              <label class="sr-only" for="inlineFormInputName">Name</label>
+              <input type="text" class="form-control" name='ids' value='' id="inlineFormInputName" placeholder="">    
+            div(class="col-3")
+              button.btn.btn-primary(type="submit" id='button-submit-change') submit
+            div(class='col-3')
+              a(href="/admin/products/create" type="button" class="btn btn-success") Them moi
+          table.table(id='form-change-multi')
             thead
               tr
+                th(scope='col')
+                  input(type='checkbox', id='checkAll')
                 th(scope='col') STT
                 th(scope='col') Hinh anh
                 th(scope='col') ten san pham
@@ -31,21 +47,25 @@ block main
             tbody
                 each product,index in products
                   tr
-                    th(scope='row') #{index+1}
+                    
+                    td 
+                      input(type='checkbox', class='checkItem', value=product.id)
+                    th(scope='row') #{(pagination.currentPage - 1)*2 + index+1}
                     td 
                       img(src=product.thumbnail alt=product.title style='width: 50px; height: 50px;')
                     td #{product.title}
                     td #{product.price}
                     if(product.status =='active')
                       td 
-                        a(href='#' class="badge badge-success") Active
+                        a(href='javascript:;' class="badge badge-success" statusId=product.id buttonStatus=product.status) Active
                     else
                       td 
-                        a(href='#' class="badge badge-danger") Inactive
+                        a(href='#' class="badge badge-danger" statusId=product.id buttonStatus=product.status) Inactive
 
                     td 
-                      a.btn.btn-primary(href='#') Edit
-                      a.btn.btn-danger(href='#') Delete
+                      a.btn.mr-2.btn-info(href=`/admin/products/detail/${product.id}`) Detail
+                      a.btn.mr-2.btn-primary(href=`/admin/products/edit/${product.id}`) Edit
+                      a.btn.btn-danger(href='javascript:;' id='button-delete' deleteId=product.id) Delete
 
 block aside
     +aside()
@@ -60,3 +80,11 @@ block aside
         li(class=`page-item ${pagination.currentPage === pagination.pages ? 'disabled' : ''}`)
           a.page-link(href='#', aria-label='Next', button-pagination=pagination.currentPage+1)
             span(aria-hidden='true') &raquo;
+
+
+      form(
+        action='',
+        method='POST',
+        id='delete-form',
+        data-src='/admin/products/delete/'
+      )

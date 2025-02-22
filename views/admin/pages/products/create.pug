@@ -1,0 +1,38 @@
+extends ../../layout/default
+include ../../mixins/aside/index
+
+
+
+block main 
+    - if (messages.success)
+        div(class='alert alert-success' id='alert-status') #{messages.success}
+    h1= titlePage
+    form(
+        action='',
+        id='form-create-product',
+        method='post'
+        enctype='multipart/form-data'
+    )
+      .form-group 
+        label(for='title') Tiêu đề 
+        input(type='text', name='title', id='title', class='form-control')
+      .form-group 
+        label(for='price') Giá 
+        input(type='number', name='price', id='price', class='form-control' placeholder=0)       
+      .form-group 
+        label(for='discountPercentage') % Giam gia
+        input(type='number', name='discountPercentage', id='discountPercentage', class='form-control' placeholder=0)
+      .form-group 
+        label(for='stock') So luong  
+        input(type='number', name='stock', id='stock', class='form-control' placeholder=0)
+      .form-group 
+        label(for='thumbnail') Anh 
+        input(type='file', name='thumbnail', id='thumbnail', class='form-control-file', accept='image/*')
+        <img id="thumbnail-preview" src="" alt="your image" />
+      .form-group 
+        label(for='position') vi tri 
+        input(type='number', name='position', id='position', class='form-control' placeholder='Tự động tăng')
+
+      button(type='submit', class='btn btn-primary') Thêm mới  
+block aside 
+    +aside()

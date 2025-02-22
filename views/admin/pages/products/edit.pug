@@ -1,0 +1,38 @@
+extends ../../layout/default
+include ../../mixins/aside/index
+
+
+
+block main 
+    - if (messages.success)
+        div(class='alert alert-success' id='alert-status') #{messages.success}
+    h1= titlePage
+    form(
+        action=`/admin/products/edit/${product._id}?_method=PATCH`
+        id='form-create-product'
+        method='POST'
+        enctype='multipart/form-data'
+    )
+      .form-group 
+        label(for='title') Tiêu đề 
+        input(type='text',name='title',value=product.title , id='title', class='form-control')
+      .form-group 
+        label(for='price') Giá 
+        input(type='number',value=product.price, name='price', id='price', class='form-control' placeholder=0)       
+      .form-group 
+        label(for='discountPercentage') % Giam gia
+        input(type='number',value=product.discountPercentage, name='discountPercentage', id='discountPercentage', class='form-control' placeholder=0)
+      .form-group 
+        label(for='stock') So luong  
+        input(type='number',value=product.stock, name='stock', id='stock', class='form-control' placeholder=0)
+      .form-group 
+        label(for='thumbnail') Anh 
+        input(type='file', name='thumbnail', id='thumbnail', class='form-control-file', accept='image/*')
+        img(id="thumbnail-preview" src=product.thumbnail alt="your image")
+      .form-group 
+        label(for='position') vi tri 
+        input(type='number',value=product.position, name='position', id='position', class='form-control' placeholder='Tự động tăng')
+
+      button(type='submit', class='btn btn-primary') Cập nhật  
+block aside 
+    +aside()

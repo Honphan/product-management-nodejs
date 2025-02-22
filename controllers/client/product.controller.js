@@ -11,3 +11,19 @@ module.exports.index = async (req, res) => {
         products: products
     });
 };
+
+
+module.exports.detail = async (req, res) => {
+    console.log('ok')
+    console.log(req.params.slug);
+    const product= await Product.findOne({
+        slug : req.params.slug,
+        deleted: false,
+        status: 'active'
+    });
+   console.log(product);
+    res.render('client/pages/products/detail',{
+        title : 'Product Page',
+        product: product
+    });
+};
