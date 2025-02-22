@@ -26,15 +26,22 @@ app.use(cookieParser('keyboard cat'));
 app.use(session({ cookie: { maxAge: 60000 }}));
 app.use(flash());
 
+// local
+// app.use(express.static('public'));
 
-app.use(express.static('public'));
+// deploy online
+app.use(express.static(`${__dirname}/public`));
+
+
 app.use(bodyParser.json());
 
 //support parsing of application/x-www-form-urlencoded post data
 app.use(bodyParser.urlencoded({ extended: true }));
 // override with POST having ?_method=DELETE
 app.use(methodOverride('_method'))
-app.set('views', './views');
+
+// deploy online local not dirname
+app.set('views', `${__dirname}/views`);
 app.set('view engine', 'pug');
 
 
