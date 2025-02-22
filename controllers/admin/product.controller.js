@@ -115,12 +115,12 @@ module.exports.create = async (req,res) =>{
 
 
 module.exports.storeProduct = async (req, res) => {
-  req.body.thumbnail = `/uploads/${req.file.filename}`;
+
    const request = req.body;
    const product = new Product(request);
    await product.save();
    req.flash('success', 'Thêm mới sản phẩm thành công');
-   res.redirect('/admin/products');
+   res.redirect('back');
 };
 
 module.exports.edit = async (req, res) => {

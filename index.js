@@ -26,6 +26,9 @@ app.use(cookieParser('keyboard cat'));
 app.use(session({ cookie: { maxAge: 60000 }}));
 app.use(flash());
 
+app.set('views', `${__dirname}/views`);
+app.set('view engine', 'pug');
+
 // local
 // app.use(express.static('public'));
 
@@ -40,9 +43,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // override with POST having ?_method=DELETE
 app.use(methodOverride('_method'))
 
-// deploy online local not dirname
-app.set('views', `${__dirname}/views`);
-app.set('view engine', 'pug');
+
 
 
 clientRoute(app);
